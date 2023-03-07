@@ -4,3 +4,18 @@ services:
     ports:
       - "10000:80"
     image: "ismail910412/apps-ismail"
+    volumes:
+      - vol-data:/var/www/html/assets
+
+   nginx:
+    ports:
+      - "10001:80"
+    image: "nginx"
+
+     apache:
+      ports:
+      - "10002:80"
+    image: "ubuntu/apache2"
+
+    volume:
+      vol-data
