@@ -6,14 +6,14 @@ services:
     image: "ismail910412/apps-ismail"
     volumes:
       - vol-data:/var/www/html/assets
-
-   nginx:
+      
+  nginx:
     ports:
       - "10001:80"
     image: "nginx"
 
-     apache:
-      ports:
+  apache:
+    ports:
       - "10002:80"
     image: "ubuntu/apache2"
 
