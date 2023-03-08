@@ -6,7 +6,9 @@ services:
     image: "ismail910412/apps-ismail"
     volumes:
       - vol-data:/var/www/html/assets
-      
+    deploy:
+      mode: replicated
+      replicas: 3
   nginx:
     ports:
       - "10001:80"
