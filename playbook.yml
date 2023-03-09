@@ -1,0 +1,33 @@
+- hosts: devpos1
+  vars:
+    myapp: stack-ismail
+  tasks:
+    - name: Install Python
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - python3
+        - python3-pip
+        - python3-docker
+
+    - name: Install module python
+      ansible.builtin.pip:
+        name: jsondiff
+        state: present
+    
+    - name: copy file
+      copy:
+        src: docker-compose.yml
+        dest: /tmp/
+
+    - name: deploy stack
+      docker_stack:
+        state: present
+        name: "{{ myapp }}"
+        compose:
+          - /tmp/docker-compose.yml
+
+    - name: scale service
+      shell:
+        cmd: docker service scale stack-ismail_web=6
