@@ -1,4 +1,4 @@
-- hosts: devpos1
+- hosts: devops1
   vars:
     myapp: stack-ismail
   tasks:
